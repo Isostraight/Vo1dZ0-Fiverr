@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IsoStraight - Professional GTA 5 Boosting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+            background: linear-gradient(135deg, #000a2e 0%, #1e3a8a 50%, #2563eb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Snow Animation */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            user-select: none;
+            pointer-events: none;
+            z-index: 1000;
+            animation: fall linear infinite;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            right: 20px;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .snowflake-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: calc(100vw - 20px);
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        /* Trust Banner */
+        .trust-banner {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(45deg, #10b981, #34d399);
+            color: white;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            z-index: 200;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.6);
+            animation: bannerGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes bannerGlow {
+            from {
+                box-shadow: 0 4px 20px rgba(16, 185, 129, 0.6);
+            }
+            to {
+                box-shadow: 0 4px 30px rgba(16, 185, 129, 0.9);
+            }
+        }
+
+        .trust-banner span {
+            font-weight: 600;
+            animation: fadeInOut 3s ease-in-out infinite;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 45px;
+            width: 100%;
+            padding: 25px 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .icon-button {
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.8), rgba(59, 130, 246, 0.8));
+            border: none;
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+        }
+
+        .icon-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(37, 99, 235, 0.6);
+            background: linear-gradient(45deg, rgba(37, 99, 235, 1), rgba(59, 130, 246, 1));
+        }
+
+        .icon-button.fiverr-btn {
+            background: linear-gradient(45deg, rgba(16, 185, 129, 0.8), rgba(52, 211, 153, 0.8));
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .icon-button.fiverr-btn:hover {
+            box-shadow: 0 6px 25px rgba(16, 185, 129, 0.6);
+            background: linear-gradient(45deg, rgba(16, 185, 129, 1), rgba(52, 211, 153, 1));
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 0 40px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            margin-top: 45px;
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(37, 99, 235, 0.8);
+            animation: titleGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from {
+                text-shadow: 0 0 30px rgba(37, 99, 235, 0.8);
+            }
+            to {
+                text-shadow: 0 0 50px rgba(37, 99, 235, 1), 0 0 70px rgba(59, 130, 246, 0.6);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            font-weight: 400;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #10b981, #34d399);
+            color: white;
+            box-shadow: 0 6px 25px rgba(16, 185, 129, 0.5);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(16, 185, 129, 0.7);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 6px 25px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .trust-banner {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+
+            .header {
+                padding: 15px 20px;
+                top: 35px;
+            }
+
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .main-content {
+                padding: 0 20px;
+                margin-top: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Trust Banner -->
+    <div class="trust-banner">
+        <span>✓ 100% Safe & Reliable • 5+ Years Experience • 1000+ Successful Boosts</span>
+    </div>
+
+    <!-- Snowflake Container -->
+    <div class="snowflake-container"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-icons">
+            <a href="#" target="_blank" class="icon-button">Discord</a>
+            <a href="https://www.fiverr.com/s/jj3zoAV" target="_blank" class="icon-button fiverr-btn">Hire on Fiverr</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="title">IsoStraight</h1>
+        <p class="subtitle">Professional GTA 5 Account Boosting • Fast • Safe • Reliable</p>
+        
+        <div class="button-container">
+            <a href="https://www.fiverr.com/s/jj3zoAV" target="_blank" class="btn btn-primary">
+                View Services
+            </a>
+            <a href="https://www.fiverr.com/s/jj3zoAV" target="_blank" class="btn btn-secondary">
+                About Me
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // Snow Animation
+        function createSnowflake() {
+            const snowflakeContainer = document.querySelector('.snowflake-container');
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            
+            const size = Math.random() * 8 + 4;
+            snowflake.style.width = size + 'px';
+            snowflake.style.height = size + 'px';
+            snowflake.style.left = Math.random() * (snowflakeContainer.offsetWidth - size) + 'px';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random() * 0.6 + 0.3;
+            
+            snowflakeContainer.appendChild(snowflake);
+            
+            setTimeout(() => {
+                if (snowflake.parentElement) {
+                    snowflake.remove();
+                }
+            }, 5000);
+        }
+
+        setInterval(createSnowflake, 150);
+
+        for (let i = 0; i < 30; i++) {
+            setTimeout(createSnowflake, i * 100);
+        }
+
+        // Button hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px) scale(1.05)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
